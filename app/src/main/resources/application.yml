@@ -1,0 +1,59 @@
+spring:
+  activiti:
+    #     true
+    #     false
+    #     create_drop
+    #     drop_create
+    database-schema-update: true
+    db-history-used: on
+    history-level: full
+    #     是否自动部署resources目录下的bpmn文件
+    check-process-definitions: on
+    deployment-mode: never-fail
+    mail-server-host: smtp.qq.com
+    mail-server-port: 465
+    mail-server-use-ssl: on
+    # 默认邮件发送人地址
+    mail-server-default-from: 353907887@qq.com
+    mail-server-user-name: 353907887@qq.com
+    mail-server-password: eccmydpzobexcafe
+  datasource:
+    dynamic:
+#      hikari: # 全局hikariCP参数，所有值和默认保持一致。(现已支持的参数如下,不清楚含义不要乱设置)
+#        catalog:
+#        connection-timeout:
+#        validation-timeout:
+#        idle-timeout:
+#        leak-detection-threshold:
+#        max-lifetime:
+#        max-pool-size:
+#        min-idle:
+#        initialization-fail-timeout:
+#        connection-init-sql:
+#        connection-test-query:
+#        dataSource-class-name:
+#        dataSource-jndi-name:
+#        schema:
+#        transaction-isolation-name:
+#        is-auto-commit:
+#        is-read-only:
+#        is-isolate-internal-queries:
+#        is-register-mbeans:
+#        is-allow-pool-suspension:
+#        data-source-properties:
+#        health-check-properties:
+      primary: master
+      strict: on #设置严格模式,默认false不启动. 启动后在未匹配到指定数据源时候会抛出异常,不启动则使用默认数据源.
+mybatis-plus:
+  configuration:
+    lazy-loading-enabled: on
+    aggressive-lazy-loading: on
+    use-column-label: on
+    # 当查询数据为空时字段返回为null，不设置这个字段为true的话查询的数据为null时，字段将被隐藏
+    call-setters-on-nulls: on
+  global-config:
+    db-config:
+      logic-delete-value: -1
+      logic-not-delete-value: 0
+      logic-delete-field: deleted
+    banner: off
