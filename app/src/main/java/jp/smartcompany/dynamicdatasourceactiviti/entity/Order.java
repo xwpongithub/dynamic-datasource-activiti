@@ -1,6 +1,5 @@
 package jp.smartcompany.dynamicdatasourceactiviti.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import jp.smartcompany.dynamicdatasourceactiviti.common.OrderStatus;
@@ -9,10 +8,10 @@ import lombok.Data;
 
 @Builder
 @Data
-@TableName("p_order")
+@TableName(value = "p_order",schema = "public")
 public class Order {
 
-    @TableId(type = IdType.AUTO)
+    @TableId
     private Integer id;
 
     /**

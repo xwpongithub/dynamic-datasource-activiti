@@ -24,7 +24,7 @@ public class AccountServiceImpl implements AccountService {
      */
     @DS("account")
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW,rollbackFor = Exception.class)
     public void reduceBalance(Long userId, Double price) {
         log.info("=============ACCOUNT START=================");
         log.info("当前 XID: {}", RootContext.getXID());

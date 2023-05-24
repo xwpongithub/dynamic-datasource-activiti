@@ -23,7 +23,7 @@ public class ProductServiceImpl implements ProductService {
      * 事务传播特性设置为 REQUIRES_NEW 开启新的事务
      */
     @DS("product")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW,rollbackFor = Exception.class)
     @Override
     public Double reduceStock(Long productId, Integer amount) {
         log.info("=============PRODUCT START=================");

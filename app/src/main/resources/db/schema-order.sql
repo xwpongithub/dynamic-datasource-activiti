@@ -1,3 +1,4 @@
+-- 逐渐自增版本
 DROP TABLE IF EXISTS p_order;
 CREATE TABLE p_order
 (
@@ -12,7 +13,8 @@ CREATE TABLE p_order
     PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS public.undo_log
+DROP TABLE IF EXISTS public.undo_log;
+CREATE TABLE public.undo_log
 (
     id            SERIAL       NOT NULL,
     branch_id     BIGINT       NOT NULL,
@@ -27,3 +29,7 @@ CREATE TABLE IF NOT EXISTS public.undo_log
     );
 
 CREATE SEQUENCE IF NOT EXISTS undo_log_id_seq INCREMENT BY 1 MINVALUE 1 ;
+
+
+truncate table p_order;
+truncate table undo_log restart identity;

@@ -26,8 +26,8 @@ public class OrderServiceImpl implements OrderService {
 
     @DS("order")
     @Override
-    @Transactional
-    @GlobalTransactional
+    @Transactional(rollbackFor = Exception.class)
+    @GlobalTransactional(rollbackFor = Exception.class)
     public void placeOrder(PlaceOrderRequest request) {
         log.info("=============ORDER START=================");
         Long userId = request.getUserId();

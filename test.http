@@ -1,0 +1,32 @@
+### 模拟正常下单，买一个商品。
+
+POST http://localhost:8080/order/placeOrder
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "productId": 1,
+  "amount": 1
+}
+
+### 模拟库存不足，事务回滚。
+
+POST http://localhost:8080/order/placeOrder
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "productId": 1,
+  "amount": 22
+}
+
+### 模拟用户余额不足，事务回滚。
+
+POST http://localhost:8080/order/placeOrder
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "productId": 1,
+  "amount": 6
+}

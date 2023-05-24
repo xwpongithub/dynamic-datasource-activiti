@@ -1,3 +1,4 @@
+
 DROP TABLE IF EXISTS product;
 CREATE TABLE product
 (
@@ -8,7 +9,8 @@ CREATE TABLE product
     PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS public.undo_log
+DROP TABLE IF EXISTS public.undo_log;
+CREATE TABLE public.undo_log
 (
     id            SERIAL       NOT NULL,
     branch_id     BIGINT       NOT NULL,
@@ -25,5 +27,7 @@ CREATE TABLE IF NOT EXISTS public.undo_log
 CREATE SEQUENCE IF NOT EXISTS undo_log_id_seq INCREMENT BY 1 MINVALUE 1 ;
 
 
-insert into product (id, price, stock)
-VALUES (1, 10, 20);
+truncate table product;
+truncate table undo_log restart identity;
+insert into product (price, stock)
+VALUES (10, 20);

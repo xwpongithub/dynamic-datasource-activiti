@@ -7,10 +7,8 @@ CREATE TABLE account
     PRIMARY KEY (id)
 );
 
-insert into account (id, balance)
-VALUES (1, 50);
-
-CREATE TABLE IF NOT EXISTS public.undo_log
+DROP TABLE IF EXISTS public.undo_log;
+CREATE TABLE public.undo_log
 (
     id            SERIAL       NOT NULL,
     branch_id     BIGINT       NOT NULL,
@@ -25,3 +23,8 @@ CREATE TABLE IF NOT EXISTS public.undo_log
     );
 
 CREATE SEQUENCE IF NOT EXISTS undo_log_id_seq INCREMENT BY 1 MINVALUE 1 ;
+
+truncate table account;
+truncate table undo_log restart identity;
+insert into account (balance)
+VALUES (50);

@@ -6,6 +6,9 @@ spring:
     application-id: dynamic-datasource-app
     tx-service-group: seata_test_tx_group
     enable-auto-data-source-proxy: off   #一定要是false
+    client:
+      rm:
+        tableMetaCheckEnable: off
     service:
       vgroup-mapping:
         my_test_tx_group: default  #key与上面的tx-service-group的值对应
@@ -58,7 +61,7 @@ spring:
 #        is-allow-pool-suspension:
 #        data-source-properties:
 #        health-check-properties:
-      primary: master
+      primary: order
       strict: on #设置严格模式,默认false不启动. 启动后在未匹配到指定数据源时候会抛出异常,不启动则使用默认数据源.
       seata: on    #开启seata代理，开启后默认每个数据源都代理，如果某个不需要代理可单独关闭
       seata-mode: AT #支持XA及AT模式,默认AT
@@ -74,5 +77,4 @@ mybatis-plus:
       logic-delete-value: -1
       logic-not-delete-value: 0
       logic-delete-field: deleted
-      id-type: auto
     banner: off

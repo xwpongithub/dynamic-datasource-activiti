@@ -1,7 +1,7 @@
 package jp.smartcompany.dynamicdatasourceactiviti.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Builder;
 import lombok.Data;
 
@@ -9,9 +9,10 @@ import java.util.Date;
 
 @Data
 @Builder
+@TableName(value = "product",schema = "public")
 public class Product {
 
-    @TableId(type = IdType.AUTO)
+    @TableId
     private Integer id;
     /**
      * 价格
